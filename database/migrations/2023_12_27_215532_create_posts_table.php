@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
+		// Post::create(['title' => 'My work post', 'excerpt' => 'Lorem ipsum', 'body' => 'Lorem ipsum dolor sit amet.', 'slug' => 'my-second-post', 'category_id' => 2]);
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+			$table->foreignId('user_id');
+			$table->foreignId('category_id');
+			$table->string('slug')->unique();
 			$table->string('title');
 			$table->text('excerpt');
 			$table->text('body');
