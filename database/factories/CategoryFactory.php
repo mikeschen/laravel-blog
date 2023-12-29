@@ -22,6 +22,3 @@ class CategoryFactory extends Factory
         ];
     }
 }
-
-
-http://127.0.0.1:8000/categories/aspernatur-fuga-sunt-non-perspiciatis
