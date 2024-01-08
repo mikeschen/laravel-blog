@@ -27,7 +27,7 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
- 
+
     /**
      * The attributes that should be cast.
      *
@@ -37,6 +37,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+	public function setPasswordAttribute($password)
+	{
+		$this->attributes['password'] = bcrypt($password);
+	}
 
 	public function posts()
 	{
