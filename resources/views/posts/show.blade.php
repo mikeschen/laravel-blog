@@ -45,6 +45,20 @@
 
                     <div class="space-y-4 lg:text-lg leading-loose">{{ $post->body }}</div>
                 </div>
+
+				<section class="col-span-8 col-start-5 mt-10 space-y-6">
+					<x-panel>
+						<form method="POST" action="/posts/{{ $post->slug }}/comments">
+							@csrf
+							<textarea name="body" class="w-full text-sm focus:outline-none focus:ring" rows="5" placeholder="Want to join the discussion? Leave a comment"></textarea>
+							<button type="submit" class="ml-4 bg-blue-500 text-white uppercase font-semibold text-xs py-2 px-10 rounded-2xl hover:bg-blue-600 transition ease-in-out duration-150">Post</button>
+						</form>
+					</x-panel>
+
+					@foreach ($post->comments as $comment)
+						<x-post-comment :comment="$comment" />
+					@endforeach
+				</section>
             </article>
         </main>
     </section>
